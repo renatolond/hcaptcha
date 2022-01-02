@@ -3,7 +3,7 @@ module Hcaptcha
     module FormHelper
       def hcaptcha_tag(**options)
         tags = ''
-        tags << hcaptcha_input(options)
+        tags << hcaptcha_input(**options)
         tags << hcaptcha_script
 
         if options[:size] == 'invisible' && !options[:no_callback_script]
@@ -20,7 +20,7 @@ module Hcaptcha
           <div
             id="captcha-1"
             class="h-captcha"
-            #{formatted_data_attributes(options)}
+            #{formatted_data_attributes(**options)}
           ></div>
         HTML
       end
@@ -67,7 +67,7 @@ module Hcaptcha
       end
 
       def formatted_data_attributes(**options)
-        hcaptcha_data_attributes(options).map { |key, value| "data-#{key}='#{value}'" }
+        hcaptcha_data_attributes(**options).map { |key, value| "data-#{key}='#{value}'" }
                                          .join(' ')
       end
     end
